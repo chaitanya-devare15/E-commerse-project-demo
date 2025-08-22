@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CDShoppy - Sign In</title>
+  <style>
+    /* Reset and Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #e2e7e6;;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* Container */
+    .signin-container {
+      background: white;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    /* Header */
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    /* Input Groups */
+    .input-group {
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      padding-right: 2.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .password-group {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    /* Error Message */
+    #error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    /* Button */
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #ff4d4f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease ;
+    }
+
+    button:hover {
+      background-color: #e03d3f;
+    }
+
+    /* Signup Link */
+    .signup-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .signup-link a {
+      color: #ff4d4f;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .signin-container {
+        margin: 0 1rem;
+      }
+    }
+     .logo {
+    background-image: url("logo.png");
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+ }
+  </style>
+</head>
+<body>
+  <div class="signin-container">
+    <form id="signin-form">
+      <h2><div class="logo"></div>CDShoppy Sign In</h2>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-group password-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <div id="error-message"></div>
+
+      <button type="submit">Sign In</button>
+
+      <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+    </form>
+  </div>
+
+  <script>
+    // Toggle show/hide password
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const type = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = type;
+    }
+
+    // Form validation and placeholder logic
+    document.getElementById('signin-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent actual form submission
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMessage = document.getElementById('error-message');
+
+      if (!email || !password) {
+        errorMessage.textContent = 'Please enter both email and password.';
+        return;
+      }
+
+      // Placeholder login logic
+      if (email === "admin@cdshoppy.com" && password === "password123") {
+        alert("Signed in successfully!");
+        errorMessage.textContent = '';
+        // You can redirect here: window.location.href = "/dashboard.html";
+      } else {
+        errorMessage.textContent = 'Invalid credentials. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

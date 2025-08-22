@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="cds.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CDshoppy | Clothes</title>
+  <style>
+    /* Reset and Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background-color: #232f3e;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff9900;
+    }
+     .log {
+    background-image: url("logo.png");
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+ }
+
+    .msg {
+      
+      font-style: italic;
+      font-size: larger;
+      font-family: fantasy;
+    
+    }
+
+    nav a {
+      margin-left: 20px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Main Content */
+    .container {
+      padding: 30px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .product-name {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .product-price {
+      color: #b12704;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .buy-button {
+      margin-top: 10px;
+      padding: 8px;
+      width: 100%;
+      background-color: #ffa41c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .buy-button:hover {
+      background-color: #ff8f00;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #131921;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .search-bar input {
+        width: 180px;
+      }
+    }
+    .rating {
+  color: #f5c518;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+.sizes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.size {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.size:hover,
+.size.selected {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"> <div class="log"></div>CDshoppy</div>
+    <div class="msg">
+              HAPPY SHOPPING
+    </div>
+    <nav>
+      <a href="cd.html">Home</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="signin.html">Sign in</a>
+      <a href="help.html">Help</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="section-title">Featured Mobiles</div>
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+       
+       
+      <div class="product-card" data-id="6">
+        <img id="pro-img" src="mob1.png" alt="Vivo Y200e 5G 6GB RAM 128GB Saffron Delight Mobile">
+        <div id="pro-name" class="product-name">Vivo Y200e 5G 6GB RAM 128GB Saffron Delight Mobile</div>
+        <div class="rating">★★★★☆</div>
+              
+        <div class="sizes" >
+          
+          <span class="size selected">8/128GB</span>
+          <span class="size">16/256GB</span>
+          
+        </div>
+        <div id="pro-price" class="product-price"> <h2>&#8377;.20000</h2></div>
+        <button id="add-to-cart-btn" class="buy-button" onclick="addToCart(6)">Add to Cart</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" data-id="7">
+        <img id="pro-img" src="mob2.png" alt="Realme C63 4G (4 GB RAM and 64GB Storage) Leather Blue Mobile Phone">
+        <div id="pro-name" class="product-name">Realme C63 4G (4 GB RAM and 64GB Storage) Leather Blue Mobile Phone</div>
+        <div class="rating">★★★★☆</div>
+        
+         <div class="sizes">
+      <span class="size selected">8/128GB</span>
+      <span class="size">16/256GB</span>
+    
+      
+    </div>
+        <div id="pro-price" class="product-price"> <h2>&#8377;.9990</h2></div>
+        <button id="add-to-cart-btn" class="buy-button" onclick="addToCart(7)">Add to Cart</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" data-id="8">
+        <img id="pro-img" src="mob3.png" alt="OnePlus Nord 512 GB RAM + 512 GB ROMPhantom Grey">
+        <div id="pro-name" class="product-name">OnePlus Nord 512 GB RAM + 512 GB ROMPhantom Grey</div>
+        <div class="rating">★★★★☆</div>
+        
+         <div class="sizes">
+      
+      <span class="size selected">8/128GB</span>
+      <span class="size">16/256GB</span>
+    </div>
+        <div id="pro-price" class="product-price"> <h2>&#8377;.37000</h2></div>
+        <button id="add-to-cart-btn" class="buy-button" onclick="addToCart(8)">Add to Cart</button>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" data-id="9">
+        <img id="pro-img" src="mob4.png" alt="Apple iPhone 15 Pro Max Black ">
+        <div id="pro-name" class="product-name">Apple iPhone 15 Pro Max Black </div>
+        <div class="rating">★★★★☆</div>
+        
+         <div class="sizes">
+            <span class="size selected">8/128GB</span>
+            <span class="size">16/256GB</span>
+      
+    </div>
+        <div id="pro-price" class="product-price"> <h2>&#8377;.50000</h2></div>
+        <button id="add-to-cart-btn" class="buy-button" onclick="addToCart(9)">Add to Cart</button>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card" data-id="10">
+        <img id="pro-img" src="mob5.png" alt="Oppo A18 4GB 64GB Blue Mobile">
+        <div id="pro-name" class="product-name">Oppo A18 4GB 64GB Blue Mobile</div>
+        <div class="rating">★★★★☆</div>
+        
+        <div class="sizes">
+            <span class="size selected">8/128GB</span>
+            <span class="size">16/256GB</span>
+          
+        </div>
+        <div id="pro-price" class="product-price"><h2> &#8377;.18000</h2></div>
+        <button id="add-to-cart-btn" class="buy-button" onclick="addToCart(10)">Add to Cart</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 CDshoppy. All rights reserved.
+    <div class="foot-panel1">
+        Back to Top
+    </div>
+    <div class="foot-panel2">
+        <ul>
+           <P>Get to Know Us</P> 
+           <a>About CDshoppy</a>
+           <a>Careers</a>
+           <a>Press Releases</a>
+           <a>CDshoppy Science</a>
+
+        </ul>
+        <ul>
+           <a>Let Us Help You</a> 
+           <a>Your Account</a>
+           <a>Returns Centre</a>
+           <a>Recalls and Product Safety Alerts</a>
+           <a>100% Purchase Protection</a>
+
+        </ul>
+    </div>
+    <div class="foot-panel3">
+        <div class="logo"></div>
+    </div>
+    <div class="foot-panel4">
+        <div class="pages">
+            <a>Conditions of Use</a>
+            <a>Privacy Notice</a>
+            <a>Your Ads Privacy Choices</a>
+        </div>
+        <div class="copyright">
+            © 2025 CDshoppy. All rights reserved. CDshoppy is a registered trademark. Unauthorized reproduction is prohibited.
+        </div>
+    </div>
+  </footer>
+  <script src="cart.js">
+  </script>
+
+</body>
+</html>

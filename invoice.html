@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CDshoppy - Invoice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f4f4f4;
+    }
+    .invoice-box {
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #eee;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+    .invoice-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .invoice-header h1 {
+      margin: 0;
+      color: #333;
+    }
+    .invoice-details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .invoice-details div {
+      line-height: 1.5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    table th {
+      background-color: #f9f9f9;
+    }
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .btn-print {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .btn-print:hover {
+      background: #0056b3;
+    }
+     .log {
+    background-image: url("logo.png");
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+     }
+     
+     .stamp{
+      text-align: right;
+      margin-top: 10px;
+
+     }
+     .stamp img{
+      width: 120px;
+      height: auto;
+     }
+  </style>
+</head>
+<body>
+  <div class="invoice-box">
+    <div class="invoice-header">
+      <div class="log"></div>
+      <h1>CDshoppy</h1>
+      <p>Official Invoice</p>
+    </div>
+
+    <div class="invoice-details">
+      <div>
+        <strong>Invoice #: </strong><span id="invoice-no"></span><br/>
+        <strong>Date: </strong><span id="invoice-date"></span>
+      </div>
+      
+        <div id="shipping-details">
+  <strong>Billed To:</strong><br/>
+</div>
+
+      
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="invoice-items"></tbody>
+    </table>
+
+    <div class="total" id="invoice-total">Total: ₹0</div>
+   <div class="stamp"> <img src="shikka.png" >
+</div>
+ 
+  <button class="btn-print" onclick="window.print()">Print Invoice</button>
+
+  <script>
+   
+  function formatDate(date) {
+    return date.toLocaleDateString("en-IN", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }
+
+  function generateInvoice() {
+    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const tbody = document.getElementById("invoice-items");
+    const totalDiv = document.getElementById("invoice-total");
+
+    if (cart.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No items in cart.</td></tr>';
+      totalDiv.innerText = "Total: ₹0";
+      return;
+    }
+
+    let total = 0;
+    cart.forEach((item, i) => {
+      const itemTotal = item.price * item.qty;
+      total += itemTotal;
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.size}</td>
+        <td>${item.qty}</td>
+        <td>₹${item.price}</td>
+        <td>₹${itemTotal}</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    totalDiv.innerText = "Total: ₹" + total;
+
+    document.getElementById("invoice-no").innerText = "INV-" + Date.now().toString().slice(-6);
+    document.getElementById("invoice-date").innerText = formatDate(new Date());
+
+    // ✅ Load Shipping Info
+    const shippingInfo = JSON.parse(localStorage.getItem("shippingInfo"));
+    if (shippingInfo) {
+      document.getElementById("shipping-details").innerHTML = `
+        <strong>Billed To:</strong><br/>
+        ${shippingInfo.name}<br/>
+        ${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state} - ${shippingInfo.zip}<br/>
+        ${shippingInfo.country}<br/>
+        Phone: ${shippingInfo.phone}<br/>
+        Email: ${shippingInfo.email}<br/>
+        <strong>Shipping Method:</strong> ${shippingInfo.method}<br/>
+        ${shippingInfo.instructions ? `<em>Note:</em> ${shippingInfo.instructions}` : ''}
+      `;
+    } else {
+      document.getElementById("shipping-details").innerText = "Shipping info not available.";
+    }
+  }
+
+  window.onload = generateInvoice;
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help - CDshoppy</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: #343a40;
+      padding: 20px 0;
+      color: #fff;
+    }
+
+    header h1 {
+      display: inline;
+    }
+
+    nav {
+      float: right;
+    }
+
+    nav a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+
+    nav a.active, nav a:hover {
+      color: #fff;
+    }
+
+    /* Clearfix for header */
+    header::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Help Section */
+    .help-section {
+      background-color: #fff;
+      padding: 40px 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .help-section h2 {
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .faq ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .faq li {
+      margin-bottom: 15px;
+    }
+
+    .faq strong {
+      color: #333;
+    }
+
+    .policy, .contact-support {
+      margin-top: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      color: #ccc;
+      padding: 20px 0;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        float: none;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>CDshoppy</h1>
+      <nav>
+        <a href="cd.html">Home</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="#" class="active">Help</a>
+        <a href="signin.html">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="help-section">
+      <h2>Help & Support</h2>
+      <p>Need assistance? We're here to help you with your shopping experience.</p>
+
+      <div class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <ul>
+          <li><strong>How do I track my order?</strong><br>
+            You can track your order from your account under “My Orders”.</li>
+          <li><strong>What is your return policy?</strong><br>
+            Returns are accepted within 7 days of delivery. Visit our Return Policy section below.</li>
+          <li><strong>How can I contact customer support?</strong><br>
+            Email us at support@cdshoppy.com or call +1-800-123-4567.</li>
+        </ul>
+      </div>
+
+      <div class="policy">
+        <h3>Return & Refund Policy</h3>
+        <p>We accept returns within 7 days of delivery. The product must be unused and in original condition. Refunds are processed within 5–7 business days.</p>
+      </div>
+
+      <div class="contact-support">
+        <h3>Still need help?</h3>
+        <p>Email us: <a href="mailto:support@cdshoppy.com">support@cdshoppy.com</a></p>
+        <p>Call us: +1-800-123-4567</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CDshoppy. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
