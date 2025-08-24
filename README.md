@@ -1,4 +1,4 @@
-# E-commerse-website
+# E-commerse-project-website
 This repo contain E commerce website
 Ecommerce Website (Demo Project)
 ⚠ Disclaimer:
